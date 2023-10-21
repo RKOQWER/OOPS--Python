@@ -1,0 +1,128 @@
+1. By default class ka functions ka first parameter (self) object ko reference karta hain.
+
+2.  Magic methods:
+  
+
+In Python, "magic functions" are also known as "magic methods" or "dunder methods" (short for "double underscore"). They are special methods with double underscores at the beginning and end of their names, such as __init__, __str__, and __add__. Magic methods provide a way to customize and control how objects of a class behave in various contexts. They are used to implement operator overloading, context managers, and other special behaviors in Python classes.
+
+Here are some commonly used magic methods in Python:
+
+__init__(self, ...): The constructor method is used to initialize an object when it is created. It's the first method called when you create an instance of a class.
+
+__str__(self): This method is called by the built-in str() function and print() to represent the object as a string. You can define how your object should be printed when you use it in a string context.
+
+__repr__(self): This method is called by the built-in repr() function and provides a detailed, unambiguous representation of an object. It's used for debugging and development.
+
+__add__(self, other): Defines the behavior of the + operator when used to add objects of the class. For example, you can define what it means to add two instances of your class together.
+
+__sub__(self, other): Similar to __add__, but for the - operator.
+
+__mul__(self, other): Defines the behavior of the * operator when used to multiply objects of the class.
+
+__len__(self): Returns the length of the object when you use the built-in len() function.
+
+__getitem__(self, key): Allows objects to be indexed like sequences or dictionaries.
+
+__setitem__(self, key, value): Allows objects to be modified when indexed.
+
+__delitem__(self, key): Allows objects to be deleted when indexed.
+
+__enter__(self), __exit__(self, exc_type, exc_value, traceback): These methods are used to define a context manager. They allow you to set up and tear down resources before and after a block of code is executed (e.g., when using the with statement).
+
+__call__(self, ...): Allows instances of the class to be called as if they were functions.
+
+__eq__(self, other), __ne__(self, other), __lt__(self, other), __le__(self, other), __gt__(self, other), __ge__(self, other): These methods are used to define comparison operators (e.g., ==, !=, <, <=, >, >=) for objects of the class.
+
+These are just some of the many magic methods available in Python. By implementing these methods in your custom classes, you can define how they behave in various situations and take full advantage of Python's object-oriented features.
+3. __init__(): Method gets executed first when the objkect is created
+
+4. Order of formal parameters in function: normal , default, * ,**
+
+5. Class vs instance attribute:
+
+
+n Python, you can have both class attributes and instance attributes in a class, but they serve different purposes and have different scopes. Here's an explanation of the differences between class attributes and instance attributes:
+
+1. Class Attributes:
+
+Class attributes are shared among all instances of a class. They are defined at the class level and are the same for all objects of that class.
+Class attributes are typically used to store values or properties that are common to all instances of the class, like default values or constants.
+You define class attributes directly inside the class but outside of any methods.
+python
+Copy code
+class MyClass:
+    class_attr = 10  # This is a class attribute
+
+obj1 = MyClass()
+obj2 = MyClass()
+
+# Accessing class attribute
+print(obj1.class_attr)  # Output: 10
+print(obj2.class_attr)  # Output: 10
+2. Instance Attributes:
+
+Instance attributes are specific to each instance of a class. They are defined and associated with individual objects of the class.
+You typically define and set instance attributes within the class's __init__ method, which is the constructor method.
+Each instance can have its own values for instance attributes.
+python
+Copy code
+class MyClass:
+    def __init__(self, value):
+        self.instance_attr = value  # This is an instance attribute
+
+obj1 = MyClass(20)
+obj2 = MyClass(30)
+
+# Accessing instance attributes
+print(obj1.instance_attr)  # Output: 20
+print(obj2.instance_attr)  # Output: 30
+In summary, class attributes are shared across all instances of a class and are defined at the class level, while instance attributes are specific to each object of the class and are defined within the constructor method (__init__). The choice between using class attributes or instance attributes depends on the specific requirements of your program and whether a particular attribute should be common to all instances or unique to each instance.
+
+6. global attribute
+
+In Python, the global keyword is used to indicate that a variable defined within a function should be treated as a global variable rather than a local variable. This means that the variable can be accessed and modified from outside the function. Using the global keyword is necessary when you want to change the value of a global variable from within a function.
+
+Here's a basic example of how the global keyword works:
+
+python
+Copy code
+global_var = 10  # This is a global variable
+
+def change_global():
+    global global_var  # Use the 'global' keyword to access the global variable
+    global_var = 20
+
+change_global()
+
+print(global_var)  # Output: 20
+In this example, we have a global variable global_var, and we define a function change_global. Inside the function, we use the global keyword to indicate that we want to modify the global variable global_var. After calling the function, the value of global_var is changed to 20.
+
+It's important to note that while you can access and modify global variables within functions using the global keyword, it's generally considered a good practice to avoid using global variables whenever possible. Global variables can make your code less modular and harder to understand, as changes to global variables can affect different parts of your program in unexpected ways. Instead, consider using function arguments and return values to pass data between functions and encapsulate the data within appropriate data structures.
+
+
+
+7.  Class varibales can be accessed from class as well as instance level
+
+8. Python first searches the varibales at instance level and if doesn't finds 
+it then it searches it at class level.
+
+9.  class method
+
+10.  A function inside class is called method.
+
+11. Yadi ham koi number of instance variable __init__() me add kar diye hain tab bhi hum bahar se aur instance variable add kar sakte hain.
+
+12. Yahi hum default parameter ka value set kiye hain to uska type specify karna zaruri nahi . Wo python khud b khud karega
+
+13. Decorators in python
+
+14. Static methods me self pass karne ka zarurat nahi at the time of function definition.
+Static method should should do something that has  a relationship with the class , but must be unique per instance.
+
+15. Class method should also do something that has a relationship with the class , but usually , those are used to manipulate different structures of data to instantiate objects
+
+16. Both class and static methods can be called from instance and class level.
+
+17. Read-only attributes created by using property decorator before function and specifying what values you want to return .
+
+18. 
